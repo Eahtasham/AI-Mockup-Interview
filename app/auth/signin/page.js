@@ -27,7 +27,7 @@ export default function SignIn() {
         return;
       }
 
-      router.push("/");
+      router.push("/dashboard");
       router.refresh();
     } catch (error) {
       console.error(error);
@@ -73,7 +73,7 @@ export default function SignIn() {
 
         <div className="space-y-4">
           <Button
-            onClick={() => signIn("google", { callbackUrl: "/" })}
+            onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
             className="w-full"
             variant="outline"
           >
@@ -81,7 +81,7 @@ export default function SignIn() {
             Sign in with Google
           </Button>
           <Button
-            onClick={() => signIn("github", { callbackUrl: "/" })}
+            onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
             className="w-full"
             variant="outline"
           >
