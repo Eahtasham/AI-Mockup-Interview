@@ -1,4 +1,4 @@
-import { pgTable, text, serial, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, varchar, timestamp } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
 export const users = pgTable("users", {
@@ -9,16 +9,17 @@ export const users = pgTable("users", {
   email: text("email").notNull().unique(),
   password: text("password"),
   provider: text("provider"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
-
-export const MockInterview=pgTable('mockInterview',{
-  id:serial('id').primaryKey(),
-  jsonMockResp:text('jsonMockResp').notNull(),
-  josPosition:varchar('jobPosition').notNull(),
-  JobDesc:varchar('jobDesc').notNull(),
-  jobExperience:varchar('jobExperience').notNull(),
-  createdBy:varchar('createdBy').notNull(),
-  createdAt:varchar('createdAt'),
-  mockId:varchar('mockId').notNull()
-})
+export const MockInterview = pgTable('mockInterview', {
+  id: serial('id').primaryKey(),
+  jsonMockResp: text('jsonMockResp').notNull(),
+  jobPosition: varchar('jobPosition').notNull(),
+  jobDesc: varchar('jobDesc').notNull(),
+  jobExperience: varchar('jobExperience').notNull(),
+  createdBy: varchar('createdBy').notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  mockId: varchar('mockId').notNull()
+});
